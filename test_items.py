@@ -1,11 +1,9 @@
 import time
-
-import pytest
 from selenium.webdriver.common.by import By
 
 
 class TestItem:
-    def test_authorization(self, browser):
+    def test_find_add_button(self, browser):
         browser.get("https://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/")
         time.sleep(5)
 
