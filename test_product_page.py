@@ -6,7 +6,7 @@ from pages.product_page import ProductPage
 from pages.login_page import LoginPage
 
 
-@pytest.mark.skip
+@pytest.mark.need_review
 def test_user_can_add_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
     link1 = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
@@ -17,6 +17,8 @@ def test_user_can_add_product_to_basket(browser):
     page.solve_quiz_and_get_code()
 
 
+
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     page = ProductPage(browser, link)
@@ -62,6 +64,7 @@ class TestUserAddToBasketFromProductPage:
         assert not page.is_disappeared(*ProductPageLocators.ADDED_NTF), \
             "Success message is disappeared"
 
+    @pytest.mark.need_review
     @pytest.mark.parametrize('num', [*range(1, 7), pytest.param(7, marks=pytest.mark.xfail), *range(8,10)])
     def test_guest_can_add_product_to_basket(browser, num):
         link = f'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{num}'
